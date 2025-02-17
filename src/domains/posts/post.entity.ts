@@ -5,7 +5,7 @@ export class Post {
 	@PrimaryGeneratedColumn('increment')
 	id: number;
 
-	@Column()
+	@Column({ unique: true })
 	title: string;
 
 	@Column()

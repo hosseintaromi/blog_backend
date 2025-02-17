@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { Post } from './domains/posts/post.entity';
 import { ROUTERS } from './router/router';
+import logger from './common/logger';
 
 dotenv.config();
 
@@ -44,16 +45,16 @@ const initializeApp = async () => {
 		setupMiddleware(app);
 
 		await AppDataSource.initialize();
-		// logger.info('Database connected successfully');
+		logger.info('Database connected successfully');
 
 		setupRoutes(app);
 
 		app.listen(port, () => {
-			// logger.info(`Server is running on port ${port}`);
-			// logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
+			logger.info(`Server is running on port ${port}`);
+			logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
 		});
 	} catch (error) {
-		// logger.error('Error during initialization:', error);
+		logger.error('Error during initialization:', error);
 		process.exit(1);
 	}
 };

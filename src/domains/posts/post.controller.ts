@@ -1,3 +1,4 @@
+import logger from '../../common/logger';
 import { PostService } from './post.service';
 
 import { Request, Response } from 'express';
@@ -12,11 +13,43 @@ export const getAllPostsHandler = async (req: Request, res: Response) => {
 
 export const getPostByIdHandler = async (req: Request, res: Response) => {
 	const { id } = req.params;
-
 	try {
-		const post = postService.findOnePost(+id);
-
+		const post = await postService.findOnePost(+id);
 		res.send(post);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+};
+
+export const createPostHandler = async (req: Request, res: Response) => {
+	const createPostDto = req.body;
+	try {
+		const createdPost = await postService.createPost(createPostDto);
+
+		res.send(createdPost);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+};
+
+export const updatePostHandler = async (req: Request, res: Response) => {
+	const updatePostDto = req.body;
+	const { id } = req.params;
+	try {
+		const createdPost = await postService.updatePost(+id, updatePostDto);
+
+		res.send(createdPost);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+};
+
+export const deletePostHandler = async (req: Request, res: Response) => {
+	const { id } = req.params;
+	try {
+		const createdPost = await postService.deletePost(+id);
+
+		res.status(201).send(createdPost);
 	} catch (error) {
 		res.status(500).send(error);
 	}
