@@ -1,4 +1,3 @@
-import logger from '../../common/logger';
 import { PostService } from './post.service';
 
 import { Request, Response } from 'express';

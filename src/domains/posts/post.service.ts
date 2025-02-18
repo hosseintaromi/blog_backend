@@ -3,7 +3,7 @@ import { PostRepository } from './post.repository';
 import { Post } from './post.entity';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { BaseError, ExistedError, NotFoundError } from '../../common/error/baseError';
+import { ExistedError, NotFoundError } from '../../common/error/baseError';
 
 const postRepo = new PostRepository();
 

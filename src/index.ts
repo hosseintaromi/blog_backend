@@ -41,6 +41,7 @@ const setupRoutes = (app: Express) => {
 };
 
 const initializeApp = async () => {
+	console.log('object');
 	try {
 		setupMiddleware(app);
 
