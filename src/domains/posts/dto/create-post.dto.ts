@@ -1,4 +1,4 @@
-import { IsBoolean, IsString } from 'class-validator';
+import { IsBoolean, IsNumber, IsString } from 'class-validator';
 
 export class CreatePostDto {
 	@IsString()
@@ -6,6 +6,9 @@ export class CreatePostDto {
 
 	@IsString()
 	description: string;
+
+	@IsNumber()
+	userId: number;
 
 	@IsBoolean()
 	active: boolean;

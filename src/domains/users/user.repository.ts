@@ -1,6 +1,6 @@
-import { AppDataSource } from '../..';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+import { AppDataSource } from '../../config/orm';
 
 export class UserRepository {
 	async findByEmail(email: string): Promise<User | null> {

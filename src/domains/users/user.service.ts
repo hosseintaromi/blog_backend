@@ -4,9 +4,9 @@ import { LoginUserDto } from './dto/login-user.dto';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { User } from './user.entity';
-import { AppDataSource } from '../..';
 import { BadRequestError, ExistedError, NotFoundError } from '../../common/error/baseError';
 import { emailRegex, passwordRegex } from '../../utils/regex';
+import { AppDataSource } from '../../config/orm';
 
 const userRepo = new UserRepository();
 

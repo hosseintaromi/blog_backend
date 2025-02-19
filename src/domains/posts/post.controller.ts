@@ -21,7 +21,8 @@ export const getPostByIdHandler = async (req: Request, res: Response) => {
 };
 
 export const createPostHandler = async (req: Request, res: Response) => {
-	const createPostDto = req.body;
+	console.log((req as any).user.id);
+	const createPostDto = { ...req.body, userId: (req as any).user.id };
 	try {
 		const createdPost = await postService.createPost(createPostDto);
 

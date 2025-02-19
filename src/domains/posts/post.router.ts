@@ -6,6 +6,7 @@ import {
 	getPostByIdHandler,
 	updatePostHandler
 } from './post.controller';
+import { authenticateToken } from '../../middlewares/auth.middleware';
 
 const router = Router();
 
@@ -13,7 +14,7 @@ router.get('/posts', getAllPostsHandler);
 
 router.get('/posts/:id', getPostByIdHandler);
 
-router.post('/posts', createPostHandler);
+router.post('/posts', authenticateToken, createPostHandler);
 
 router.delete('/posts/:id', deletePostHandler);
 
